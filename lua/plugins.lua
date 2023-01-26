@@ -1,7 +1,7 @@
 local fn = vim.fn
 local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 
-if fn.empty(fn.glob(install_path)) > 0 then 
+if fn.empty(fn.glob(install_path)) > 0 then
 	PACKER_BOOTSTRAP = fn.system({
 		"git",
 		"clone",
@@ -22,7 +22,7 @@ vim.cmd([[
 ]])
 
 local status_ok, packer = pcall(require, "packer")
-if not status_ok then 
+if not status_ok then
 	return
 end
 
@@ -34,62 +34,66 @@ packer.init({
 	},
 })
 
-return packer.startup(function(use) 
-	use { "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" }
+return packer.startup(function(use)
+	use({ "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" })
 
-      use({
-          'rose-pine/neovim',
-          as = 'rose-pine',
-          config = function()
-              require("rose-pine").setup()
-              vim.cmd('colorscheme rose-pine')
-          end
-      })
+	use({
+		"rose-pine/neovim",
+		as = "rose-pine",
+		config = function()
+			require("rose-pine").setup()
+			vim.cmd("colorscheme rose-pine")
+		end,
+	})
 
-      use {
-        'nvim-lualine/lualine.nvim',
-        requires = { 'kyazdani42/nvim-web-devicons', opt = true }
-      }
+	use({
+		"nvim-lualine/lualine.nvim",
+		requires = { "kyazdani42/nvim-web-devicons", opt = true },
+	})
 
-      use {
-	  "windwp/nvim-autopairs",
-    config = function() require("nvim-autopairs").setup {} end
-      }
+	use({
+		"windwp/nvim-autopairs",
+		config = function()
+			require("nvim-autopairs").setup({})
+		end,
+	})
 
-      use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.1',
-      -- or                            , branch = '0.1.x',
-        requires = { {'nvim-lua/plenary.nvim'} }
-      }
+	use({
+		"nvim-telescope/telescope.nvim",
+		tag = "0.1.1",
+		-- or                            , branch = '0.1.x',
+		requires = { { "nvim-lua/plenary.nvim" } },
+	})
 
-      use { 'jose-elias-alvarez/null-ls.nvim' }
+	use({ "jose-elias-alvarez/null-ls.nvim" })
 
-      use { 'nvim-treesitter/nvim-treesitter', { run = ':TSUpdate'} }
-      use {
-            'VonHeikemen/lsp-zero.nvim',
-            branch = 'v1.x',
-            requires = {
-              -- LSP Support
-              {'neovim/nvim-lspconfig'},             -- Required
-              {'williamboman/mason.nvim'},           -- Optional
-              {'williamboman/mason-lspconfig.nvim'}, -- Optional
-          
-              -- Autocompletion
-              {'hrsh7th/nvim-cmp'},         -- Required
-              {'hrsh7th/cmp-nvim-lsp'},     -- Required
-              {'hrsh7th/cmp-buffer'},       -- Optional
-              {'hrsh7th/cmp-path'},         -- Optional
-              {'saadparwaiz1/cmp_luasnip'}, -- Optional
-              {'hrsh7th/cmp-nvim-lua'},     -- Optional
-          
-              -- Snippets
-              {'L3MON4D3/LuaSnip'},             -- Required
-              {'rafamadriz/friendly-snippets'}, -- Optional
-            }
-      }
+	use({ "nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" } })
+	use({
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v1.x",
+		requires = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{ "williamboman/mason.nvim" }, -- Optional
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
+
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "hrsh7th/cmp-buffer" }, -- Optional
+			{ "hrsh7th/cmp-path" }, -- Optional
+			{ "saadparwaiz1/cmp_luasnip" }, -- Optional
+			{ "hrsh7th/cmp-nvim-lua" }, -- Optional
+
+			-- Snippets
+			{ "L3MON4D3/LuaSnip" }, -- Required
+			{ "rafamadriz/friendly-snippets" }, -- Optional
+		},
+	})
+
+	use({ "antoinemadec/FixCursorHold.nvim" })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
 	end
 end)
-
