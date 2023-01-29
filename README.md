@@ -8,5 +8,5 @@ https://www.youtube.com/c/devaslife
 
 # LSP Support
 - Go Language
-- React
+- Lua
 - TypeScript
