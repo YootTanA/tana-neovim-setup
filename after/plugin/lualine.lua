@@ -3,11 +3,11 @@ if not status_ok then
 	return
 end
 
-local ds = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.WARN })
-for _, d in pairs(ds) do
-	print(d.message)
-	print(d.lnum)
-end
+--local ds = vim.diagnostic.get(bufnr, { severity = vim.diagnostic.severity.WARN })
+--for _, d in pairs(ds) do
+--	print(d.message)
+--	print(d.lnum)
+--end
 
 local hide_in_width = function()
 	return vim.fn.winwidth(0) > 80

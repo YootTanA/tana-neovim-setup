@@ -5,6 +5,9 @@ if not status_ok then
 end
 
 treesitter.setup({
+	autotag = {
+		enable = true,
+	},
 	-- A list of parser names, or "all" (the four listed parsers should always be installed)
 	ensure_installed = { "rust", "c", "go", "javascript", "python", "typescript", "lua", "vim", "help" },
 
