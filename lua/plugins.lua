@@ -94,6 +94,7 @@ return packer.startup(function(use)
 	})
 
 	use({ "antoinemadec/FixCursorHold.nvim" })
+	use({ "fatih/vim-go" })
 
 	if PACKER_BOOTSTRAP then
 		require("packer").sync()
