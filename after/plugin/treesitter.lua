@@ -4,12 +4,15 @@ if not status_ok then
 	return
 end
 
+vim.opt.runtimepath:append("/home/oat/.local/share/nvim/site/parsers/parser/")
+
 treesitter.setup({
+	ignore_install = { "help" },
+	parser_install_dir = "/home/oat/.local/share/nvim/site/parsers/parser/",
 	autotag = {
 		enable = true,
 	},
 	-- A list of parser names, or "all" (the four listed parsers should always be installed)
-	ensure_installed = { "rust", "c", "go", "javascript", "python", "typescript", "lua", "vim", "help" },
 
 	-- Install parsers synchronously (only applied to `ensure_installed`)
 	sync_install = false,

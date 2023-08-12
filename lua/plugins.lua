@@ -37,15 +37,7 @@ packer.init({
 return packer.startup(function(use)
 	use({ "wbthomason/packer.nvim", commit = "6afb67460283f0e990d35d229fd38fdc04063e0a" })
 
-	use({
-		"rose-pine/neovim",
-		as = "rose-pine",
-		config = function()
-			require("rose-pine").setup()
-			vim.cmd("colorscheme rose-pine")
-		end,
-	})
-
+	use("kvrohit/rasmus.nvim")
 	use({
 		"nvim-lualine/lualine.nvim",
 		requires = { "kyazdani42/nvim-web-devicons", opt = true },

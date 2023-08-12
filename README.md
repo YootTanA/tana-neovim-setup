@@ -10,5 +10,3 @@ https://www.youtube.com/c/devaslife
 - Go Language
 - Lua
 - TypeScript
-- React
-- HTML
